@@ -3,7 +3,7 @@ const config = {
   bracketSpacing: true,
   printWidth: 80,
   singleQuote: true,
-  trailingComma: 'es5',
+  trailingComma: 'all',
   semi: false,
   tabWidth: 2,
   useTabs: false,

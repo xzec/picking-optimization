@@ -32,14 +32,11 @@ export default [
       // general
       'no-trailing-spaces': 'error',
       'quote-props': ['error', 'as-needed'],
-      quotes: ['error', 'single'],
       'sort-imports': ['error', { ignoreDeclarationSort: true }],
       'object-property-newline': [
         'error',
         { allowAllPropertiesOnSameLine: false },
       ],
-      'comma-dangle': ['error', 'always-multiline'],
-      semi: ['error', 'never'],
       'eol-last': ['error', 'always'],
       'arrow-body-style': ['error', 'as-needed'],
       'no-multi-spaces': 'error',
