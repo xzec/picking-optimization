@@ -11,8 +11,8 @@
     "resolveJsonModule": true,
     "moduleDetection": "force",
     "noUncheckedIndexedAccess": true,
-    "moduleResolution": "bundler",
-    "module": "NodeNext",
+    "moduleResolution": "node",
+    "module": "ESNext",
     "typeRoots": ["node_modules/@types"],
     "paths": {
       "~/*": ["./src/*"]

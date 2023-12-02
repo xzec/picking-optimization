@@ -11,7 +11,7 @@ export default [
   js.configs.recommended,
   {
     files: ['**/*.ts'],
-    ignores: ['global.d.ts'],
+    ignores: ['global.d.ts', 'dist/*'],
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
