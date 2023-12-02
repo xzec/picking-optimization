@@ -1,0 +1,23 @@
+{
+  "compilerOptions": {
+    "rootDir": "src",
+    "lib": ["ES2022"],
+    "strict": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "skipLibCheck": true,
+    "target": "ES2022",
+    "verbatimModuleSyntax": true,
+    "resolveJsonModule": true,
+    "moduleDetection": "force",
+    "noUncheckedIndexedAccess": true,
+    "moduleResolution": "bundler",
+    "module": "NodeNext",
+    "typeRoots": ["node_modules/@types"],
+    "paths": {
+      "~/*": ["./src/*"]
+    }
+  },
+  "include": ["src/**/*", "eslint.config.js", "global.d.ts"],
+  "exclude": ["node_modules"],
+}
