@@ -1,0 +1,1 @@
+export { fetchProductPositions } from './fetchProductPositions'
