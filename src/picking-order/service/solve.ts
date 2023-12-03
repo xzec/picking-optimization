@@ -9,11 +9,10 @@ export const calculateDistance = <V extends Vector3>(a: V, b: V): number =>
 
 export const solve = (
   startingPosition: Vector3,
-  productPositionsMap: Map<string, ProductPosition[]>,
+  products: ProductPosition[],
 ): PickingOrder => {
-  const unvisited = new Set(productPositionsMap.keys())
-
-  let productPositions = Array.from(productPositionsMap.values()).flat()
+  const unvisited = new Set(products.map(({ productId }) => productId))
+  let productPositions = [...products]
   let lastVisitedPosition = startingPosition
 
   const result: PickingOrder = {

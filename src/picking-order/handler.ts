@@ -26,16 +26,7 @@ const handler: RequestHandler = asyncHandler(async (req, res) => {
     return
   }
 
-  const productPositionsMap = new Map<string, ProductPosition[]>()
-
-  productPositions.forEach((position) => {
-    const { productId } = position
-    if (!productPositionsMap.get(productId))
-      productPositionsMap.set(productId, [])
-    productPositionsMap.get(productId)!.push(position)
-  })
-
-  solve(startingPosition, productPositionsMap)
+  solve(startingPosition, productPositions)
 
   res.send(productPositions)
 })
