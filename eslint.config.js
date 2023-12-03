@@ -33,10 +33,6 @@ export default [
       'no-trailing-spaces': 'error',
       'quote-props': ['error', 'as-needed'],
       'sort-imports': ['error', { ignoreDeclarationSort: true }],
-      'object-property-newline': [
-        'error',
-        { allowAllPropertiesOnSameLine: false },
-      ],
       'eol-last': ['error', 'always'],
       'arrow-body-style': ['error', 'as-needed'],
       'no-multi-spaces': 'error',
