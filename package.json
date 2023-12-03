@@ -9,7 +9,7 @@
   "type": "module",
   "packageManager": "^pnpm@8.3.0",
   "scripts": {
-    "dev": "tsup src/index.ts --clean --format esm --dts --watch --onSuccess \"node dist/index.js\"",
+    "dev": "pnpm run build --watch --onSuccess \"node dist/index.js\"",
     "build": "tsup src/index.ts --clean --format esm --dts",
     "start": "node dist/index.js",
     "lint": "pnpm exec eslint src/**/*.ts"
