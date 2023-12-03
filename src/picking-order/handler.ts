@@ -2,21 +2,20 @@ import type { RequestHandler } from 'express'
 import { fetchProductPositions } from '~/picking-order/service'
 import { asyncHandler, resolve } from '~/utils'
 import { PickingOrderRequestSchema } from '~/picking-order/validation'
-import type { ProductPosition } from '~/picking-order/types'
-import { solve } from '~/picking-order/service/solve'
+import { solve } from '~/picking-order/service'
 
 const handler: RequestHandler = asyncHandler(async (req, res) => {
-  const pickingOrder = PickingOrderRequestSchema.safeParse(req.body)
-  if (!pickingOrder.success) {
+  const pickingOrderRequest = PickingOrderRequestSchema.safeParse(req.body)
+  if (!pickingOrderRequest.success) {
     res
       .status(400)
       .send(
-        `Invalid request body. Original error: ${pickingOrder.error.toString()}`,
+        `Invalid request body. Original error: ${pickingOrderRequest.error.toString()}`,
       )
     return
   }
 
-  const { products, startingPosition } = pickingOrder.data
+  const { products, startingPosition } = pickingOrderRequest.data
 
   const [err, productPositions] = await resolve(fetchProductPositions(products))
   if (err) {
@@ -26,9 +25,9 @@ const handler: RequestHandler = asyncHandler(async (req, res) => {
     return
   }
 
-  solve(startingPosition, productPositions)
+  const pickingOrder = solve(startingPosition, productPositions)
 
-  res.send(productPositions)
+  res.send(pickingOrder)
 })
 
 export default handler
