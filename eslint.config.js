@@ -10,8 +10,8 @@ import importPlugin from 'eslint-plugin-import'
 export default [
   js.configs.recommended,
   {
-    files: ['**/*.ts'],
-    ignores: ['global.d.ts', 'dist/*'],
+    files: ['**/*.ts', 'src/env.mjs'],
+    ignores: ['dist/*'],
     languageOptions: {
       parser: typescriptParser,
       parserOptions: {
