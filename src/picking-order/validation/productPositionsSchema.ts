@@ -1,6 +1,6 @@
 import { z } from 'zod'
 
-const ProductPositionSchema = z.object({
+export const ProductPositionSchema = z.object({
   positionId: z.string().min(1),
   x: z.number(),
   y: z.number(),
@@ -9,6 +9,4 @@ const ProductPositionSchema = z.object({
   quantity: z.number().positive(),
 })
 
-export const ProductPositionsSchema = ProductPositionSchema.array()
-
-export type ProductPosition = z.infer<typeof ProductPositionSchema>
+export const ProductPositionsSchema = ProductPositionSchema.array().min(1)

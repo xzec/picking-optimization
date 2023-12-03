@@ -1,7 +1,9 @@
 import type { RequestHandler } from 'express'
-import { fetchProductPositions } from './service'
+import { fetchProductPositions } from '~/picking-order/service'
 import { asyncHandler, resolve } from '~/utils'
-import { PickingOrderRequestSchema, type ProductPosition } from './validation'
+import { PickingOrderRequestSchema } from '~/picking-order/validation'
+import type { ProductPosition } from '~/picking-order/types'
+import { solve } from '~/picking-order/service/solve'
 
 const handler: RequestHandler = asyncHandler(async (req, res) => {
   const pickingOrder = PickingOrderRequestSchema.safeParse(req.body)
@@ -14,7 +16,7 @@ const handler: RequestHandler = asyncHandler(async (req, res) => {
     return
   }
 
-  const { products } = pickingOrder.data
+  const { products, startingPosition } = pickingOrder.data
 
   const [err, productPositions] = await resolve(fetchProductPositions(products))
   if (err) {
@@ -32,6 +34,8 @@ const handler: RequestHandler = asyncHandler(async (req, res) => {
       productPositionsMap.set(productId, [])
     productPositionsMap.get(productId)!.push(position)
   })
+
+  solve(startingPosition, productPositionsMap)
 
   res.send(productPositions)
 })
